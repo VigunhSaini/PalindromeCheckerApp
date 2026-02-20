@@ -3,16 +3,20 @@
 //UseCase2:
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
+        String original = "racecar";
+        String reversed = ""; // Initializing an empty string
 
-        String original = "madam";
+        // Loop: Iterating from the last character to the first
+        for (int i = original.length() - 1; i >= 0; i--) {
+            // String Concatenation: Building the reversed string
+            reversed += original.charAt(i);
+        }
 
-
-        String reversed = new StringBuilder(original).reverse().toString();
-
-        if (original.equalsIgnoreCase(reversed)) {
-            System.out.println(original + " is a palindrome.");
+        // Comparison using equals() for content validation
+        if (original.equals(reversed)) {
+            System.out.println("Result: It is a palindrome.");
         } else {
-            System.out.println(original + " is not a palindrome.");
+            System.out.println("Result: It is not a palindrome.");
         }
     }
 }
