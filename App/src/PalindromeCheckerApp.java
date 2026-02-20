@@ -2,21 +2,30 @@
 //Author: Vigunh
 //UseCase2:
 public class PalindromeCheckerApp {
-    public static void main(String[] args) {
-        String original = "racecar";
-        String reversed = ""; // Initializing an empty string
 
-        // Loop: Iterating from the last character to the first
-        for (int i = original.length() - 1; i >= 0; i--) {
-            // String Concatenation: Building the reversed string
-            reversed += original.charAt(i);
+    public class PalindromeCheck {
+        public static boolean isPalindrome(String str) {
+            // Step 1: Convert string to char array
+            char[] charArray = str.toCharArray();
+
+            // Step 2: Initialize two pointers
+            int left = 0;
+            int right = charArray.length - 1;
+
+            // Step 3: Two-pointer comparison
+            while (left < right) {
+                if (charArray[left] != charArray[right]) {
+                    return false; // Not a palindrome
+                }
+                left++;  // Move forward
+                right--; // Move backward
+            }
+
+            return true; // Match found
         }
 
-        // Comparison using equals() for content validation
-        if (original.equals(reversed)) {
-            System.out.println("Result: It is a palindrome.");
-        } else {
-            System.out.println("Result: It is not a palindrome.");
+        public static void main(String[] args) {
+            String input = "racecar";
+            System.out.println("Is '" + input + "' a palindrome? " + isPalindrome(input));
         }
-    }
-}
+}}
