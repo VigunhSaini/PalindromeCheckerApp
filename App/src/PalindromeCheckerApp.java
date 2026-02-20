@@ -1,26 +1,18 @@
-//Version 1.0
+//Version 2.0
 //Author: Vigunh
-//UseCase1: Welcome Page
+//UseCase2:
 public class PalindromeCheckerApp {
-
-    // Application constants
-    private static final String APP_NAME = "Palindrome Checker App";
-    private static final String VERSION = "Version 1.0";
-
-    // Entry point of the application
     public static void main(String[] args) {
 
-        // Welcome Message
-        System.out.println("====================================");
-        System.out.println(" Welcome to " + APP_NAME);
-        System.out.println(" " + VERSION);
-        System.out.println("====================================");
+        String original = "madam";
 
-        // Application Flow Control
-        System.out.println("Application started successfully.");
-        System.out.println("Ready to validate palindromes...");
 
-        // Next Use Case can be invoked here
-        // Example: startPalindromeValidation();
+        String reversed = new StringBuilder(original).reverse().toString();
+
+        if (original.equalsIgnoreCase(reversed)) {
+            System.out.println(original + " is a palindrome.");
+        } else {
+            System.out.println(original + " is not a palindrome.");
+        }
     }
 }
