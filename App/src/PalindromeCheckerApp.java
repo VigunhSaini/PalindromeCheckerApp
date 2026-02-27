@@ -13,22 +13,25 @@ public class PalindromeCheckerApp {
 
     public static boolean isPalindrome(String str, int start, int end) {
 
-        // Base Condition
-        if (start >= end) {
+        // Base condition
+        if (start >= end)
             return true;
-        }
 
-        // If characters don't match
-        if (str.charAt(start) != str.charAt(end)) {
+        if (str.charAt(start) != str.charAt(end))
             return false;
-        }
 
-        // Recursive Call
         return isPalindrome(str, start + 1, end - 1);
     }
 
     public static void main(String[] args) {
-        String str = "madam";
-        boolean result = isPalindrome(str, 0, str.length() - 1);
+
+        String input = "Nurses Run";
+
+        // Step 1: Normalize string
+        String normalized = input.toLowerCase().replaceAll("\\s+", "");
+
+        // Step 2: Apply palindrome logic
+        boolean result = isPalindrome(normalized, 0, normalized.length() - 1);
+
         System.out.println("Is Palindrome? " + result);
     }}
