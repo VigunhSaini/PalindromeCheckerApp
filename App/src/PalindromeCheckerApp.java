@@ -1,31 +1,44 @@
 //Version 2.0
 //Author: Vigunh
 //UseCase2:
+
+
+import java.util.Stack;
+import java.util.Scanner;
+
 public class PalindromeCheckerApp {
 
-    public class PalindromeCheck {
-        public static boolean isPalindrome(String str) {
-            // Step 1: Convert string to char array
-            char[] charArray = str.toCharArray();
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter a string: ");
+        String input = scanner.nextLine();
 
-            // Step 2: Initialize two pointers
-            int left = 0;
-            int right = charArray.length - 1;
+        // Convert to lowercase (optional for case-insensitive check)
+        input = input.toLowerCase();
 
-            // Step 3: Two-pointer comparison
-            while (left < right) {
-                if (charArray[left] != charArray[right]) {
-                    return false; // Not a palindrome
-                }
-                left++;  // Move forward
-                right--; // Move backward
+        Stack<Character> stack = new Stack<>();
+
+        // Push all characters into stack
+        for (int i = 0; i < input.length(); i++) {
+            stack.push(input.charAt(i));
+        }
+
+        boolean isPalindrome = true;
+
+        // Pop characters and compare
+        for (int i = 0; i < input.length(); i++) {
+            if (input.charAt(i) != stack.pop()) {
+                isPalindrome = false;
+                break;
             }
-
-            return true; // Match found
         }
 
-        public static void main(String[] args) {
-            String input = "racecar";
-            System.out.println("Is '" + input + "' a palindrome? " + isPalindrome(input));
+        // Print result
+        if (isPalindrome) {
+            System.out.println("The string is a Palindrome.");
+        } else {
+            System.out.println("The string is NOT a Palindrome.");
         }
-}}
+
+        scanner.close();
+    }}
