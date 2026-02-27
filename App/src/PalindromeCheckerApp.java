@@ -11,27 +11,29 @@ import java.util.Deque;
 
 public class PalindromeCheckerApp {
 
-    public static boolean isPalindrome(String str, int start, int end) {
+    public static boolean checkPalindrome(String input) {
 
-        // Base condition
-        if (start >= end)
-            return true;
+        String normalized = input.toLowerCase().replaceAll("\\s+", "");
 
-        if (str.charAt(start) != str.charAt(end))
-            return false;
+        int start = 0;
+        int end = normalized.length() - 1;
 
-        return isPalindrome(str, start + 1, end - 1);
+        while (start < end) {
+            if (normalized.charAt(start) != normalized.charAt(end)) {
+                return false;
+            }
+            start++;
+            end--;
+        }
+
+        return true;
     }
 
     public static void main(String[] args) {
 
         String input = "Nurses Run";
 
-        // Step 1: Normalize string
-        String normalized = input.toLowerCase().replaceAll("\\s+", "");
-
-        // Step 2: Apply palindrome logic
-        boolean result = isPalindrome(normalized, 0, normalized.length() - 1);
+        boolean result = checkPalindrome(input);
 
         System.out.println("Is Palindrome? " + result);
     }}
